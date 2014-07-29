@@ -105,8 +105,27 @@
 					"description": "A brief summary of the operation."
 				},
 				"description": {
-					"type": "string",
-					"description": "A longer description of the operation."
+                                        "anyOf": [
+						{
+                                                  "type": "string" 
+                                                },
+						{
+							"type": "object",
+							"required": ["content"],
+							"properties": {
+                                                          "format": {"type": "string"},
+                                                          "content": {"type": "string"}
+							}
+						},
+						{
+							"type": "object",
+							"required": ["translation_key"],
+							"properties": {
+                                                          "format": {"type": "string"},
+                                                          "translation_key": {"type": "string"}
+							}
+						}
+					]
 				},
 				"operationId": {
 					"type": "string",
